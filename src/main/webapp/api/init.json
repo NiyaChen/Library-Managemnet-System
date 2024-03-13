@@ -1,0 +1,67 @@
+{
+  "homeInfo": {
+    "title": "Home",
+    "href": "page/welcome-1.html?t=1"
+  },
+  "logoInfo": {
+    "title": "Library Management",
+    "image": "images/logo.png",
+    "href": ""
+  },
+  "menuInfo": [
+    {
+      "title": "Function Management",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+          {
+              "title": "借阅管理",
+              "href": "page/table.html",
+              "icon": "fa fa-window-maximize",
+              "target": "_self"
+            },
+        {
+          "title": "Book Management",
+          "href": "bookIndex",
+          "icon": "fa fa-gears",
+          "target": "_self"
+        },
+        {
+          "title": "Reader Management",
+          "href": "readerIndex",
+          "icon": "fa fa-file-text",
+          "target": "_self"
+        },
+        {
+            "title": "Type Management",
+            "href": "typeIndex",
+            "icon": "fa fa-window-maximize",
+            "target": "_self"
+          },
+          {
+              "title": "Notice Management",
+              "href": "noticeIndex",
+              "icon": "fa fa-window-maximize",
+              "target": "_self"
+            }
+      ]
+    },
+    
+    {
+      "title": "统计分析",
+      "icon": "fa fa-slideshare",
+      "href": "",
+      "target": "_self",
+      "child": [
+
+        {
+          "title": "统计分析",
+          "href": "page/error.html",
+          "icon": "fa fa-superpowers",
+          "target": "_self"
+        }
+      ]
+    }
+  ]
+}

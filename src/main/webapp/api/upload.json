@@ -1,0 +1,10 @@
+{
+  "code": 1,
+  "msg": "Upload successful",
+  "data": {
+    "url": [
+      "../images/logo.png",
+      "../images/captcha.jpg"
+    ]
+  }
+}
