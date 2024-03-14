@@ -79,10 +79,10 @@
                 {field: 'id', width: 100, title: 'ID', sort: true},
                 {field: 'isbn', width: 80, title: 'ISBN'},
                 //获取对象中的属性 对象
-                {templet:'<div>{{d.classInfo.name}}</div>', width: 150, title: 'book type'},
-                {field: 'name', width: 150, title: 'book name'},
-                {field: 'author', width: 100, title: 'author'},
-                {field: 'language', width: 120, title: 'language'},
+                {templet:'<div>{{d.classInfo.name}}</div>', width: 150, title: 'Book type'},
+                {field: 'name', width: 150, title: 'Book name'},
+                {field: 'author', width: 100, title: 'Author'},
+                {field: 'language', width: 120, title: 'Language'},
                 {title: 'operation', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [10, 15, 20, 25, 50, 100],

@@ -30,7 +30,7 @@
 
         <script type="text/html" id="toolbarDemo">
             <div class="layui-btn-container">
-                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> Send </button>
+                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> Add </button>
                 <button class="layui-btn layui-btn-sm layui-btn-danger data-delete-btn" lay-event="delete"> Delete </button>
             </div>
         </script>
@@ -38,8 +38,8 @@
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
 
         <script type="text/html" id="currentTableBar">
-            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="query">Modify</a>
-            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">Delete</a>
+            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="query">edit</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">delete</a>
         </script>
 
     </div>
@@ -65,8 +65,8 @@
                 {field: 'id', width: 100, title: 'ID', sort: true},
                 {templet:"<div>{{d.content.substring(0,15)}}....</div>", width: 180, title: 'Notice content'},
                 {templet:"<div>{{layui.util.toDateString(d.createDate,'yyyy-MM-dd HH:mm:ss' )}}</div>", width: 280, title: 'Release time'},
-                {field: 'authorName', width: 100, title: 'publisher'},
-                {title: 'operate', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
+                {field: 'author', width: 100, title: 'Publisher'},
+                {title: 'Operate', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [10, 15, 20, 25, 50, 100],
             limit: 15,
@@ -172,7 +172,7 @@
         table.on('toolbar(currentTableFilter)', function (obj) {
             if (obj.event === 'add') {  // 监听添加操作
                 var index = layer.open({
-                    title: 'posting notice',
+                    title: 'Posting notice',
                     type: 2,
                     shade: 0.2,
                     maxmin:true,

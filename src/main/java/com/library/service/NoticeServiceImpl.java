@@ -31,6 +31,7 @@ public class NoticeServiceImpl implements NoticeService{
     }
 
     @Override
+
     public void deleteNoticeByIds(List<String> ids) {
         List<Integer> list=new ArrayList<>();
         for(String id:ids){

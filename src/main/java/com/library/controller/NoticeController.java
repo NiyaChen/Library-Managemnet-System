@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+
 @Controller
 public class NoticeController {
     @Autowired
@@ -18,6 +22,14 @@ public class NoticeController {
     @GetMapping("/noticeIndex")
     public String noticeIndex(){
         return "/notice/noticeIndex";
+    }
+
+    /**
+     * 发布公告页面跳转
+     */
+    @GetMapping("addNotice")
+    public String addNotice(){
+        return "/notice/addNotice";
     }
 
     /**
@@ -29,6 +41,27 @@ public class NoticeController {
         PageInfo<Notice> pageInfo= noticeService.queryNoticeAll(content,page,limit);
         return R.ok("Successful",pageInfo.getTotal(),pageInfo.getList());
     }
-
+    /**
+     * 公告发布提交方法
+     */
+    @ResponseBody
+    @RequestMapping("/addNoticeSubmit")
+    public R addNoticeSubmit(Notice notice){
+        //设置进入的时间
+        notice.setAuthor(1);
+        notice.setCreateDate(new Date());
+        noticeService.insertNoticeInfo(notice);
+        return R.ok();
+    }
+    /**
+     * 根据ids删除信息
+     */
+    @ResponseBody
+    @RequestMapping("/deleteNoticeByIds")
+    public R deleteNoticeByIds(String ids){
+        List list = Arrays.asList(ids.split(","));
+        noticeService.deleteNoticeByIds(list);
+        return R.ok();
+    }
 
 }
