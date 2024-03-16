@@ -49,14 +49,14 @@
     },
     
     {
-      "title": "Statistic Analysis",
+      "title": "statistic analysis",
       "icon": "fa fa-slideshare",
       "href": "",
       "target": "_self",
       "child": [
 
         {
-          "title": "统计分析",
+          "title": "Statistic Analysis",
           "href": "page/error.html",
           "icon": "fa fa-superpowers",
           "target": "_self"

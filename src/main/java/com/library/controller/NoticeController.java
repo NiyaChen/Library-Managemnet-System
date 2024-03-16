@@ -6,6 +6,7 @@ import com.library.service.NoticeService;
 import com.library.util.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,6 +31,15 @@ public class NoticeController {
     @GetMapping("addNotice")
     public String addNotice(){
         return "/notice/addNotice";
+    }
+    //详细转
+    @GetMapping("/queryNotice")
+    public String queryNoticeById(Integer id, Model model){
+        //根据id查询公告详细信息
+        Notice notice=noticeService.queryNoticeById(id);
+        model.addAttribute("info", notice);
+        return "/notice/queryNotice";
+
     }
 
     /**
