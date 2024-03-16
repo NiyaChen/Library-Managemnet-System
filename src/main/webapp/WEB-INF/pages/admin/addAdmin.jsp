@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Add type</title>
+    <title>Add Administrator</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -24,20 +24,28 @@
 <body>
 <div class="layui-form layuimini-form">
     <div class="layui-form-item">
-        <label class="layui-form-label required">type name</label>
+        <label class="layui-form-label required">Username</label>
         <div class="layui-input-block">
-            <input type="text" name="name" lay-verify="required" lay-reqtext="Type name cannot be empty" placeholder="Please input type name" value="" class="layui-input">
-            <tip>Fill in the type name.</tip>
+            <input type="text" name="username" lay-verify="required" lay-reqtext="Username cannot be empty" placeholder="Please input username" value="" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label required">Password</label>
+        <div class="layui-input-block">
+            <input type="text" name="password" lay-verify="required" lay-reqtext="Password cannot be empty" placeholder="Please input password" value="" class="layui-input">
         </div>
     </div>
 
-    <div class="layui-form-item layui-form-text">
-        <label class="layui-form-label">remarks information</label>
+    <div class="layui-form-item" >
+        <label class="layui-form-label required">Administrator type</label>
         <div class="layui-input-block">
-            <textarea name="remarks" class="layui-textarea" placeholder="Please input remarks information"></textarea>
+            <select class="layui-input" name="type" id="type">
+                <option value=""></option>
+                <option value="0">General administrator</option>
+                <option value="1">Senior administrator</option>
+            </select>
         </div>
     </div>
-
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">Confirm save</button>
@@ -54,23 +62,25 @@
         //监听提交
         form.on('submit(saveBtn)', function (data) {
             var datas=data.field;//form单中的数据信息
-            //向后台发送数据提交提交添加
+            //向后台发送数据提交添加
             $.ajax({
-                url:"addTypeSubmit",
+                url:"addAdminSubmit",
                 type:"POST",
                 data:datas,
-                success:function (result){
-                    if (result.code==0){//如果成功
+                success:function(result){
+                    if(result.code==0){//如果成功
                         layer.msg('Add successful',{
                             icon:6,
                             time:500
-                        },function (){
+                        },function(){
+
                             parent.window.location.reload();
                             var iframeIndex = parent.layer.getFrameIndex(window.name);
                             parent.layer.close(iframeIndex);
                         })
-                    }else {
-                        layer.msg("Add failed");
+                    }else{
+                        layer.msg(resut.msg);
+
                     }
                 }
             })

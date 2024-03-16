@@ -18,7 +18,7 @@ layui.define(['table', 'jquery', 'form'], function (exports) {
 
         //默认设置
         opt.searchKey = opt.searchKey || 'keyword';
-        opt.searchPlaceholder = opt.searchPlaceholder || 'Keyword Search';
+        opt.searchPlaceholder = opt.searchPlaceholder || '关键词搜索';
         opt.checkedKey = opt.checkedKey;
         opt.table.page = opt.table.page || true;
         opt.table.height = opt.height || 315;

@@ -365,7 +365,7 @@ layui.define(['laypage', 'form'], function (exports) {
                         }
                     },
                     error: function (xhr, textstatus, thrown) {
-                        layer.msg('The fa icon interface is incorrect');
+                        layer.msg('fa图标接口有误');
                     }
                 });
                 return iconlist;

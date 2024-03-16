@@ -46,7 +46,7 @@ layui.define(["element", "layer", "jquery"], function (exports) {
             options.isIframe = options.isIframe || false;
             options.maxTabNum = options.maxTabNum || 20;
             if ($(".layuimini-tab .layui-tab-title li").length >= options.maxTabNum) {
-                layer.msg('The number of tab windows has reached the limit, please close some tabs first.');
+                layer.msg('Tab窗口已达到限定数量，请先关闭部分Tab');
                 return false;
             }
             var ele = element;
@@ -150,9 +150,9 @@ layui.define(["element", "layer", "jquery"], function (exports) {
             miniTab.closeTabRignMenu();
             var menuHtml = '<div class="layui-unselect layui-form-select layui-form-selected layuimini-tab-mousedown layui-show" data-tab-id="' + tabId + '" style="left: ' + left + 'px!important">\n' +
                 '<dl>\n' +
-                '<dd><a href="javascript:;" layuimini-tab-menu-close="current">Close Current</a></dd>\n' +
-                '<dd><a href="javascript:;" layuimini-tab-menu-close="other">Close Other</a></dd>\n' +
-                '<dd><a href="javascript:;" layuimini-tab-menu-close="all">Close All</a></dd>\n' +
+                '<dd><a href="javascript:;" layuimini-tab-menu-close="current">关 闭 当 前</a></dd>\n' +
+                '<dd><a href="javascript:;" layuimini-tab-menu-close="other">关 闭 其 他</a></dd>\n' +
+                '<dd><a href="javascript:;" layuimini-tab-menu-close="all">关 闭 全 部</a></dd>\n' +
                 '</dl>\n' +
                 '</div>';
             var makeHtml = '<div class="layuimini-tab-make"></div>';

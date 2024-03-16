@@ -13,7 +13,7 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
         miniTab = layui.miniTab;
 
     if (!/http(s*):\/\//.test(location.href)) {
-        var tips = "Please deploy the project to a web container (Apache/Tomcat/Nginx/IIS/etc.) first, otherwise some of the data will not be displayed";
+        var tips = "请先将项目部署至web容器（Apache/Tomcat/Nginx/IIS/等），否则部分数据将无法显示";
         return layer.alert(tips);
     }
 
@@ -43,7 +43,7 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
             options.maxTabNum = options.maxTabNum || 20;
             $.getJSON(options.iniUrl, function (data) {
                 if (data == null) {
-                    miniAdmin.error('No menu information')
+                    miniAdmin.error('暂无菜单信息')
                 } else {
                     miniAdmin.renderLogo(data.logoInfo);
                     miniAdmin.renderClear(options.clearUrl);
@@ -74,7 +74,7 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
                     miniAdmin.deleteLoader(options.loadingTime);
                 }
             }).fail(function () {
-                miniAdmin.error('Incorrect menu interface');
+                miniAdmin.error('菜单接口有误');
             });
         },
 
@@ -149,7 +149,7 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
             } else if (el.mozRequestFullScreen) {
                 el.mozRequestFullScreen();
             } else {
-                miniAdmin.error('Browser does not support full-screen calls！');
+                miniAdmin.error('浏览器不支持全屏调用！');
             }
         },
 
@@ -175,7 +175,7 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
             } else if (el.webkitCancelFullScreen) {
                 el.webkitCancelFullScreen();
             } else {
-                miniAdmin.error('Browser does not support full-screen calls！');
+                miniAdmin.error('浏览器不支持全屏调用！');
             }
         },
 
@@ -263,11 +263,11 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
                         }
                     }).fail(function () {
                         layer.close(loading);
-                        return miniAdmin.error('Cleaning the cache interface is failed');
+                        return miniAdmin.error('清理缓存接口有误');
                     });
                 } else {
                     layer.close(loading);
-                    return miniAdmin.success('Cleaning the cache interface is successful');
+                    return miniAdmin.success('清除缓存成功');
                 }
             });
 
@@ -276,7 +276,7 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
              */
             $('body').on('click', '[data-refresh]', function () {
                 $(".layui-tab-item.layui-show").find("iframe")[0].contentWindow.location.reload();
-                miniAdmin.success('Refresh Successful');
+                miniAdmin.success('刷新成功');
             });
 
             /**

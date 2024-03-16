@@ -119,4 +119,20 @@
       type = #{type,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <!-- 高级查询列表-->
+  <select id="queryAdminInfoAll" resultType="admin" parameterType="admin">
+    select * from admin
+    <where>
+      <if test="username!=null and username !=''">
+        and username like '%${username}%'
+      </if>
+      <if test="type!=null">
+        and type = #{type}
+      </if>
+    </where>
+  </select>
+
+  <select id="queryUserByNameAndPassword" resultType="com.library.po.Admin">
+    select * from admin where username=#{username} and password=#{password}
+  </select>
 </mapper>

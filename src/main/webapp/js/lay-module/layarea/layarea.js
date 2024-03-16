@@ -4030,7 +4030,6 @@ layui.define(['layer', 'form', 'laytpl'], function (exports) {
     };
 
     layarea.render = function (options) {
-
         let inst = new Class(options);
         layarea._id++;
         return thisArea.call(inst);
@@ -4039,21 +4038,3 @@ layui.define(['layer', 'form', 'laytpl'], function (exports) {
     //暴露接口
     exports('layarea', layarea);
 });
-//
-// layui.use(['laypage', 'layer'], function(){
-//     var laypage = layui.laypage
-//         ,layer = layui.layer;
-//
-//     laypage.render({
-//         elem: 'demo'
-//         ,count: 100
-//         ,layout: ['prev', 'page', 'next', 'skip']
-//         ,prev: 'Previous'
-//         ,next: 'Next'
-//         ,jump: function(obj, first){
-//             if(!first){
-//                 layer.msg('Jump to ' + obj.curr + ' page');
-//             }
-//         }
-//     });
-// });
