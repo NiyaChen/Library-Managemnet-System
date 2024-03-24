@@ -32,6 +32,14 @@ public class AdminController {
         return "/admin/addAdmin";
     }
     /**
+     * 根据id查询管理员信息
+     */
+    @GetMapping("/queryAdminById")
+    public String queryAdminById(Integer id, Model model){
+        model.addAttribute("id",id);
+        return "/admin/updateAdmin";
+    }
+    /**
      * 提交管理员添加功能
      */
     @ResponseBody
@@ -43,6 +51,28 @@ public class AdminController {
         }
         else {
             return R.fail("add failed");
+        }
+    }
+    /**
+     * 修改密码
+     */
+
+    @ResponseBody
+    @RequestMapping("/updatePwdSubmit")
+    public R updatePwdSubmit(Integer id,String oldPwd,String newPwd){
+        //根据id查询对象
+        Admin info=adminService.queryAdminById(id);
+        if(!oldPwd.equals(info.getPassword())){//输入的密码是否和原密码一致
+            return R.fail("The old password entered does not match the original.");
+        }else{
+            //调用修改方法
+            Admin admin=new Admin();
+            admin.setPassword(newPwd);
+            admin.setType(info.getType());
+            admin.setUsername(info.getUsername());
+            admin.setId(id);
+            adminService.updateAdminSubmit(admin);
+            return R.ok("Password changed successfully.");
         }
     }
     /**
