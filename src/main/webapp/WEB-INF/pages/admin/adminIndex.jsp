@@ -29,7 +29,7 @@
                 Administrator type:
                 <div class="layui-inline" >
                     <select class="layui-input" name="type" id="type">
-                        <option value=""></option>
+                        <option value="">Please Select</option>
                         <option value="0">General administrator</option>
                         <option value="1">Senior administrator</option>
                     </select>

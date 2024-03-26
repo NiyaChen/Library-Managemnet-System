@@ -1,5 +1,6 @@
 package com.library.dao;
 import com.library.po.ClassInfo;
+import com.library.po.LendList;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 import java.util.List;
@@ -28,6 +29,16 @@ public interface ClassInfoDao {
      * 根据ids删除记录信息
      */
     void deleteTypeByIds(List<Integer> id);
+
+    /**
+     * 还书
+     */
+    int updateLendListSubmit(LendList lendList);
+
+    /**
+     * 查询时间线
+     */
+//    List<LendList> queryLookBookList(@Param("rid") Integer rid,@Param("bid") Integer bid);
 
 }
 

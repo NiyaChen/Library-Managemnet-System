@@ -1,5 +1,8 @@
 package com.library.po;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -34,6 +37,9 @@ public class LendList implements Serializable {
      *
      * @mbggenerated Sat Mar 02 16:41:46 GMT+08:00 2024
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss" ,timezone = "GMT+8")
+
     private Date lendDate;
 
     /**
@@ -42,6 +48,8 @@ public class LendList implements Serializable {
      *
      * @mbggenerated Sat Mar 02 16:41:46 GMT+08:00 2024
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern ="yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date backDate;
 
     /**

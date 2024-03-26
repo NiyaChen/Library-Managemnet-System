@@ -26,5 +26,9 @@ public interface BookInfoService {
      * 删除功能
      */
     void deleteBookInfoById(List<String> ids);
+    /**
+     * 根据图书的类型获取图书的数量
+     */
+    List<BookInfo> getBookCountByType();
 
 }

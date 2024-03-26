@@ -47,4 +47,9 @@ public class BookInfoServiceImpl implements BookInfoService{
             bookInfoDao.deleteByPrimaryKey(Integer.valueOf(id));
         }
     }
+
+    @Override
+    public List<BookInfo> getBookCountByType() {
+        return bookInfoDao.getBookCountByType();
+    }
 }

@@ -1,15 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ page isELIgnored="false" %>
+
 <%
     String path=request.getContextPath();
     String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Add Administrator</title>
+    <title>异常还书</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -23,32 +25,30 @@
 </head>
 <body>
 <div class="layui-form layuimini-form">
+    <input type="text" name="id"  value="${id}"/>
+    <input type="text" name="bookId"  value="${bid}"/>
     <div class="layui-form-item">
-        <label class="layui-form-label required">Username</label>
+        <label class="layui-form-label required">Exception</label>
         <div class="layui-input-block">
-            <input type="text" name="username" lay-verify="required" lay-reqtext="Username cannot be empty" placeholder="Please input username" value="" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label required">Password</label>
-        <div class="layui-input-block">
-            <input type="text" name="password" lay-verify="required" lay-reqtext="Password cannot be empty" placeholder="Please input password" value="" class="layui-input">
-        </div>
-    </div>
-
-    <div class="layui-form-item" >
-        <label class="layui-form-label required">Administrator type</label>
-        <div class="layui-input-block">
-            <select class="layui-input" name="type" id="type">
-                <option value="">Please Select</option>
-                <option value="0">General administrator</option>
-                <option value="1">Senior administrator</option>
+            <select name="type" id="type" lay-verify="required">
+                <option value="">Please select</option>
+                <option value="0">Normal</option>
+                <option value="1">Delay</option>
+                <option value="2">Damaged</option>
+                <option value="3">Lose</option>
             </select>
         </div>
     </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">Remark</label>
+        <div class="layui-input-block">
+            <textarea name="remarks" class="layui-textarea" > </textarea>
+        </div>
+    </div>
+
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">Confirm save</button>
+            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">Confirm</button>
         </div>
     </div>
 </div>
@@ -64,23 +64,23 @@
             var datas=data.field;//form单中的数据信息
             //向后台发送数据提交添加
             $.ajax({
-                url:"addAdminSubmit",
+                url:"updateLendInfoSubmit",
                 type:"POST",
                 data:datas,
+                // contentType:"application/json",
+                // data:JSON.stringify(datas),
                 success:function(result){
                     if(result.code==0){//如果成功
-                        layer.msg('Add successful',{
+                        layer.msg('Return book successful',{
                             icon:6,
                             time:500
                         },function(){
-
                             parent.window.location.reload();
                             var iframeIndex = parent.layer.getFrameIndex(window.name);
                             parent.layer.close(iframeIndex);
                         })
                     }else{
-                        layer.msg(resut.msg);
-
+                         layer.msg("Return book failed");
                     }
                 }
             })

@@ -1,6 +1,7 @@
 package com.library.dao;
 
 import com.library.po.LendList;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -59,4 +60,24 @@ public interface LendListMapper {
      */
     List<LendList> queryLendListAll(LendList lendList);
 
+
+    /**
+     * 查询当前用户已经借了多少本信息
+     */
+    int queryLendNumberById(Integer id);
+
+    /**
+     * 删除
+     */
+    int deleteLendListById(Integer id);
+
+    /**
+     * 还书
+     */
+    int updateLendListSubmit(LendList lendList);
+
+    /**
+     * 查询时间线
+     */
+    List<LendList> queryLookBookList(@Param("rid") Integer rid, @Param("bid") Integer bid);
 }

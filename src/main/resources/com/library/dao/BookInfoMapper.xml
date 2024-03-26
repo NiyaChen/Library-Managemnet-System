@@ -268,4 +268,5 @@
     GROUP BY
       type. NAME
   </select>
+
 </mapper>

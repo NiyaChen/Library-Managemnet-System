@@ -92,6 +92,15 @@ public class BookInfo implements Serializable {
      */
     private String introduction;
 
+    private int counts;
+    public int getCounts() {
+        return counts;
+    }
+
+    public void setCounts(int counts) {
+        this.counts = counts;
+    }
+
     //添加图书类型对象属性
     private ClassInfo classInfo;
 

@@ -161,40 +161,97 @@
     </association>
     <association property="reader" javaType="com.library.po.ReaderCard">
       <id property="id" column="id"></id>
-      <result column="rname" property="name"></result>
+      <result property="name" column="rname"></result>
       <result property="cardnumber" column="cardnumber"></result>
     </association>
   </resultMap>
   <!-- 查询相关借阅信息-->
   <select id="queryLendListAll" parameterType="com.library.po.LendList" resultMap="queryLendListAllMap">
-    select lend.*, reader.cardnumber, reader.name as rname, info.name as bname from lend_list lend left join reader_card
-      reader on reader_id = lend.reader_id left join book_info info on lend.book_id=info.id
+    SELECT
+    lend.*, reader.cardnumber,
+    reader.`name` AS rname,
+    info.`name` AS bname
+    FROM
+    lend_list lend
+    LEFT JOIN reader_card reader ON reader.id = lend.reader_id
+    LEFT JOIN book_info info ON lend.book_id = info.id
     <!--带条件的高级查询-->
     <where>
-      <if test="bookInfo !=null">
-        <if test="bookInfo.name!=null">
+      <if test="bookInfo!=null">
+        <if test="bookInfo.name!=null and bookInfo.name!=''">
           and info.name like '%${bookInfo.name}%'
         </if>
-           <!--如果是在借中，书状态1 返回时间：null
-           已归还 书状态为0， 返回时间不为null-->
-
-            <if test="bookInfo.status!=null and bookInfo.status==1">
-             and info.status=1 and back_date is null
-           </if>
-         <if test="bookInfo.status!=null and bookInfo.status==0">
+        <!--如果是在借中，书状态 1  返回时间：null
+            如果已归还  书状态0  返回时间不为空
+        -->
+        <if test="bookInfo.status!=null and bookInfo.status==1">
+          and info.status=1 and back_date is null
+        </if>
+        <if test="bookInfo.status!=null and bookInfo.status==0">
           and info.status=0 and back_date is not null
         </if>
+
       </if>
-    <!-- 归还方式查询-->
-    <if test="type !=null">
-      and type=#{type}
-    </if>
-    <!--根据借阅卡查询-->
-    <if test="reader!=null">
-      <if test="reader.cardnumber!=null and reader.cardnumber!=''">
-        and cardnumber like '%${reader.cardnumber}%'
+      <!--归还方式查询-->
+      <if test="type!=null">
+        and type=#{type}
       </if>
-    </if>
+
+      <!--根据借阅卡查询-->
+      <if test="reader!=null">
+        <if test="reader.cardnumber!=null and reader.cardnumber!=''">
+          and cardnumber like '%${reader.cardnumber}%'
+        </if>
+      </if>
     </where>
+  </select>
+  <!-- 查询借了多少本用读者id-->
+  <select id="queryLendNumberById" parameterType="int" resultType="int">
+    SELECT
+      COUNT(*)
+    FROM
+      lend_list lend
+        LEFT JOIN
+      book_info book ON book.id = lend.book_id
+    WHERE
+      lend_date IS NULL AND lend.reader_id = #{id}
+
+  </select>
+  <!--根据id删除借阅记录-->
+  <delete id="deleteLendListById" parameterType="int" >
+    delete from lend_list where id=#{id}
+  </delete>
+
+  <!--还书操作 设置还书时间即可-->
+  <update id="updateLendListSubmit" parameterType="com.library.po.LendList">
+    update lend_list
+    <set>
+      back_date=#{backDate},
+      <if test="type!=null">
+        type=#{type},
+      </if>
+      <if test="remarks!=null and remarks!=''">
+        remarks=#{remarks}
+      </if>
+    </set>
+    where id=#{id}
+
+  </update>
+
+  <!--查询时间线-->
+  <select id="queryLookBookList" resultMap="queryLendListAllMap">
+    select lend.*,reader.number,info.name as bname ,reader.name as readername from lend_list lend
+    left join reader_card reader on reader.id=lend.reader_id
+    left join book_info info on info.id=lend.book_id
+    <where>
+      <if test="bid!=null">
+        and info.id=#{bid}
+      </if>
+      <if test="rid!=null">
+        and reader.id=#{rid}
+      </if>
+    </where>
+    order by lend.id desc
+
   </select>
 </mapper>

@@ -65,4 +65,6 @@ public interface BookInfoMapper {
      * 查询所有的图书信息
      */
     List<BookInfo> queryBookInfoAll(BookInfo bookInfo);
+
+    List<BookInfo> getBookCountByType();
 }
