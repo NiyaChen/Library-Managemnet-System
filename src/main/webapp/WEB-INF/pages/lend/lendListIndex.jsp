@@ -92,7 +92,7 @@
             }],
             cols: [[
                 {type: "checkbox", width: 50},
-             {field: 'id', width: 50, title: 'ID', sort: true},
+             {field: 'id', width: 80, title: 'ID', sort: true},
                 {templet: '<div><a href="javascript:void(0)" style="color:#00b7ee" lay-event="bookInfoEvent">{{d.bookInfo.name}}</a></div>',
                     width: 150, title: 'Book name'},
                 {templet: '<div>{{d.reader.cardnumber}}</div>', width: 120, title: 'Library card'},

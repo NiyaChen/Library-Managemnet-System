@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -30,6 +32,20 @@ public class ReaderController {
         return "/reader/addReader";
     }
     /**
+     * 读者端个人信息管理部门页面渲染
+     */
+    @GetMapping("/readerIndex2")
+    public String readerIndex2(){
+        return "/reader/readerIndex2";
+    }
+
+    @GetMapping("/queryReaderById")
+    public String queryReaderById(Integer id, Model model){
+        model.addAttribute("id",id);
+        return "/reader/updatePwd";
+    }
+
+    /**
      * 查询所有读者信息
      */
     @ResponseBody
@@ -37,7 +53,20 @@ public class ReaderController {
     public R queryReaderAll(ReaderCard info, @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "15") Integer limit){
 
         PageInfo<ReaderCard>  pageInfo=readerService.queryReaderAll(info,page,limit);
-        return R.ok("成功",pageInfo.getTotal(),pageInfo.getList());
+        return R.ok("successful",pageInfo.getTotal(),pageInfo.getList());
+    }
+    /**
+     * 查询所有的读者信息
+     */
+    @ResponseBody
+    @RequestMapping("/queryReaderAll2")
+    public R queryReaderAll(ReaderCard info, HttpServletRequest req){
+        //获取登录用户
+        HttpSession session= req.getSession();
+        ReaderCard readerCard= (ReaderCard) session.getAttribute("user");
+        info.setId(readerCard.getId());
+        PageInfo<ReaderCard>  pageInfo=readerService.queryReaderAll(info,1,1);
+        return R.ok("successful",pageInfo.getTotal(),pageInfo.getList());
     }
     /**
      * 提交监听功能
@@ -75,5 +104,14 @@ public class ReaderController {
     public R updateReaderSubmit(@RequestBody ReaderCard readerCard){
         readerService.updateReaderInfoSubmit(readerCard);
         return R.ok();
+    }
+    @ResponseBody
+    @RequestMapping("/updateReaderPwdSubmit")
+    public R updateReaderPwdSubmit(Integer id,String oldPwd,String newPwd){
+        //根据id查询对象
+        ReaderCard info=readerService.queryReaderById(id);
+        info.setPassword(newPwd);
+        readerService.updateReaderInfoSubmit(info);
+        return R.ok("Password changed successfully");
     }
 }

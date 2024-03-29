@@ -65,7 +65,7 @@
                 {field: 'id', width: 100, title: 'ID', sort: true},
                 {templet:"<div>{{d.content.substring(0,15)}}....</div>", width: 180, title: 'Notice content'},
                 {templet:"<div>{{layui.util.toDateString(d.createDate,'yyyy-MM-dd HH:mm:ss' )}}</div>", width: 280, title: 'Release time'},
-                {field: 'author', width: 100, title: 'Publisher'},
+                {field: 'authorName', width: 100, title: 'Publisher'},
                 {title: 'Operate', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [10, 15, 20, 25, 50, 100],
@@ -73,6 +73,7 @@
             page: true,
             skin: 'line',
             id:'testReload'
+
         });
 
         var $ = layui.$, active = {

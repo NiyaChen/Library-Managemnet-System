@@ -23,4 +23,5 @@ public interface AdminService {
     Admin queryAdminById(Integer id);
 
 
+    Admin queryUserByNameAndPassword(String username, String password);
 }

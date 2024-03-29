@@ -25,4 +25,6 @@ public interface ReaderService {
      * 删除
      */
     void deleteReaderByIds(List<String> ids);
+
+    ReaderCard queryUserInfoByNameAndPassword(String username, String password);
 }

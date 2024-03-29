@@ -1,6 +1,7 @@
 package com.library.dao;
 
 import com.library.po.ReaderCard;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -59,4 +60,6 @@ public interface ReaderCardMapper {
      * 查询所有的记录信息
      */
     List<ReaderCard> queryReaderListAll(ReaderCard readerCard);
+
+    ReaderCard queryUserInfoByNameAndPassword(@Param("username") String username, @Param("password")String password);
 }

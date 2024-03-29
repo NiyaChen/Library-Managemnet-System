@@ -184,4 +184,14 @@ public class LendListController {
         model.addAttribute("info",list);
         return "/lend/lookBookList";
     }
+    /**
+     * 查阅时间线2
+     */
+    @RequestMapping("/queryLookBookList2")
+    public String queryLookBookList2(HttpServletRequest request ,Model model){
+        ReaderCard readerCard= (ReaderCard) request.getSession().getAttribute("user");
+        List<LendList>   list=lendListService.queryLookBookList(readerCard.getId(),null);
+        model.addAttribute("info",list);
+        return "/lend/lookBookList";
+    }
 }

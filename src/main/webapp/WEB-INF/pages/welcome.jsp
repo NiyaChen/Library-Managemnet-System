@@ -53,55 +53,8 @@
         <div class="layui-row layui-col-space15">
             <div class="layui-col-md8">
                 <div class="layui-row layui-col-space15">
-                    <div class="layui-col-md6">
-                        <div class="layui-card">
-                            <div class="layui-card-header"><i class="fa fa-warning icon"></i>Notice Information</div>
-                            <div class="layui-card-body">
-                                <div class="welcome-module">
-                                    <div class="layui-row layui-col-space10 notice" >
-                                        ${info.content}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="layui-col-md6">
-                        <div class="layui-card">
-                            <div class="layui-card-header"><i class="fa fa-credit-card icon icon-blue"></i>Quick Entry</div>
-                            <div class="layui-card-body">
-                                <div class="welcome-module">
-                                    <div class="layui-row layui-col-space10 layuimini-qiuck">
-                                        <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a href="typeIndex" layuimini-content-href="typeIndex" data-title="Book type" data-icon="fa fa-window-maximize">
-                                                <i class="fa fa-window-maximize"></i>
-                                                <cite>Book type</cite>
-                                            </a>
-                                        </div>
-                                        <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a href="bookIndex" layuimini-content-href="bookIndex" data-title="book" data-icon="fa fa-gears">
-                                                <i class="fa fa-gears"></i>
-                                                <cite>Book</cite>
-                                            </a>
-                                        </div>
-                                        <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a href="noticeIndex" layuimini-content-href="noticeIndex" data-title="notice management" data-icon="fa fa-file-text">
-                                                <i class="fa fa-file-text"></i>
-                                                <cite>Notice</cite>
-                                            </a>
-                                        </div>
-                                        <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a href="readerIndex" layuimini-content-href="readCardIndex" data-title="reader" data-icon="fa fa-dot-circle-o">
-                                                <i class="fa fa-dot-circle-o"></i>
-                                                <cite>Reader</cite>
-                                            </a>
-                                        </div>
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                    </div>
                     <div class="layui-col-md12">
                         <div class="layui-card">
                             <div class="layui-card-header"><i class="fa fa-line-chart icon"></i>Statistics</div>

@@ -41,4 +41,9 @@ public class ReaderServiceImpl implements ReaderService{
             readerDao.deleteByPrimaryKey(Integer.valueOf(id));
         }
     }
+
+    @Override
+    public ReaderCard queryUserInfoByNameAndPassword(String username, String password) {
+        return readerDao.queryUserInfoByNameAndPassword(username,password);
+    }
 }

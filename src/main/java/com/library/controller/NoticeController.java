@@ -25,6 +25,12 @@ public class NoticeController {
         return "/notice/noticeIndex";
     }
 
+    @GetMapping("/noticeIndex2")
+    public String noticeIndex2(){
+        return "/notice/noticeIndex2";
+    }
+
+
     /**
      * 发布公告页面跳转
      */

@@ -243,4 +243,8 @@
       </if>
     </where>
   </select>
+  <select id="queryUserInfoByNameAndPassword" resultType="com.library.po.ReaderCard">
+    select * from reader_card where username =#{username} and password=#{password}
+  </select>
+
 </mapper>

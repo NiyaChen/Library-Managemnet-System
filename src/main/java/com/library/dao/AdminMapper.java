@@ -1,6 +1,7 @@
 package com.library.dao;
 
 import com.library.po.Admin;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -57,4 +58,8 @@ public interface AdminMapper {
      * 管理员分页查询
      */
     List<Admin> queryAdminInfoAll(Admin admin);
+    /**
+     * 根据用户名和密码查询信息
+     */
+    Admin queryUserByNameAndPassword(@Param("username") String username, @Param("password") String password);
 }
