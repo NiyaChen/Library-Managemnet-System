@@ -218,7 +218,7 @@
 
   </select>
   <!--根据id删除借阅记录-->
-  <delete id="deleteLendListById" parameterType="int" >
+  <delete id="deleteLendListById" parameterType="int">
     delete from lend_list where id=#{id}
   </delete>
 

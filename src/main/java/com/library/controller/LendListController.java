@@ -128,15 +128,14 @@ public class LendListController {
     /**
      * 删除借阅记录
      */
-    @ResponseBody
-    @RequestMapping("/deleteLendListByIds")
-    public R deleteLendListByIds(String ids,String bookIds){
-        List list=Arrays.asList(ids.split(","));//借阅记录的id
-        List blist=Arrays.asList(bookIds.split(","));//图书信息的id
-
-        int num=lendListService.deleteLendListById(list,blist);
-        return R.ok();
-    }
+//    @ResponseBody
+//    @RequestMapping("/deleteLendListByIds")
+//    public R deleteLendListByIds(String ids,String bookIds){
+//        List list=Arrays.asList(ids.split(","));//借阅记录的id
+//        List blist=Arrays.asList(bookIds.split(","));//图书信息的id
+//        int num=lendListService.deleteLendListById(list,blist);
+//        return R.ok();
+//    }
 
     /**
      * 还书功能
